@@ -1,0 +1,118 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/github-dark.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Louis.GitHub.webcollector</title>
+  <meta name="description" content="WebCollector 爬虫框架">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Louis.GitHub.webcollector</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">WebCollector 爬虫框架</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/LouisProgress/louis.github.WebCollector/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/LouisProgress/louis.github.WebCollector/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/LouisProgress/louis.github.WebCollector" class="code">View Louis.GitHub.webcollector on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <p><a href="https://github.com/CrawlScript/WebCollector">https://github.com/CrawlScript/WebCollector</a></p>
+
+<h1>
+<a id="webcollector" class="anchor" href="#webcollector" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>WebCollector</h1>
+
+<p>爬虫简介
+WebCollector是一个无须配置、便于二次开发的JAVA爬虫框架（内核），它提供精简的的API，只需少量代码即可实现一个功能强大的爬虫。
+爬虫内核：
+WebCollector致力于维护一个稳定、可扩的爬虫内核，便于开发者进行灵活的二次开发。内核具有很强的扩展性，用户可以在内核基础上开发自己想要的爬虫。源码中集成了Jsoup，可进行精准的网页解析。
+DEMO：
+用WebCollector制作一个爬取《知乎》并进行问题精准抽取的爬虫（JAVA）
+import java.io.IOException;
+import java.util.regex.Pattern;</p>
+
+<p>import org.jsoup.nodes.Document;</p>
+
+<p>import cn.edu.hfut.dmic.webcollector.model.CrawlDatums;
+import cn.edu.hfut.dmic.webcollector.model.Page;
+import cn.edu.hfut.dmic.webcollector.plugin.berkeley.BreadthCrawler;</p>
+
+<p>public class zhihuCrawler extends BreadthCrawler {</p>
+
+<pre><code>public zhihuCrawler(String crawlPath, boolean autoParse) {
+    super(crawlPath, autoParse);
+    // TODO Auto-generated constructor stub
+}
+
+/* 启动爬虫 */
+public static void main(String[] args) throws IOException {
+    zhihuCrawler crawler = new zhihuCrawler("crsw", true);
+    try {
+        crawler.addSeed("http://www.zhihu.com/question/21003086");
+        crawler.addRegex("http://www.zhihu.com/question/.*");
+        crawler.start(5);
+    } catch (Exception e) {
+        // TODO: handle exception
+    }
+}
+
+@Override
+public void visit(Page page, CrawlDatums arg1) {
+    // TODO Auto-generated method stub
+    String question_regex = "^http://www.zhihu.com/question/[0-9]+";
+    if (Pattern.matches(question_regex, page.getUrl())) {
+        System.out.println("正在抽取" + page.getUrl());
+        /* 抽取标题 */
+        String title = page.doc().title();
+        System.out.println(title);
+        /* 抽取提问内容 */
+        String question = page.doc().select("div[id=zh-question-detail]").text();
+        System.out.println(question);
+
+    }
+}
+</code></pre>
+
+<p>}</p>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/LouisProgress" class="avatar"><img src="https://avatars2.githubusercontent.com/u/17307458?v=3&amp;s=60" width="48" height="48"></a> <a href="https://github.com/LouisProgress">LouisProgress</a> maintains <a href="https://github.com/LouisProgress/louis.github.WebCollector">Louis.GitHub.webcollector</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/LouisProgress/louis.github.WebCollector/tarball/master" class="tar">tar</a><a href="https://github.com/LouisProgress/louis.github.WebCollector/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
